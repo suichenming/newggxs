@@ -1,0 +1,505 @@
+.carousel-indicators{
+    margin-left:-30% !important
+  }
+  .nav-tabs > li > a{
+    border-radius: 0;
+    border: none
+  }
+   .navs > li > a:hover, .nav > li > a:focus{
+    cursor: pointer;
+  }
+  .navs > li > a {
+      position: relative;
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+  }
+  .navs {
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+      height: 41px;
+  }
+  .navs > li {
+      position: relative;
+      display: block;
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .mybody {
+      width: 88%;
+      margin: 0 auto;
+    }
+    .boxishowlogin {
+      display: none;
+    }
+    .mybtns input {
+      width: 64%;
+      height: 40px;
+      margin-right: 50px;
+      text-indent: 2em;
+    }
+    #heightimg {
+      height: 433px;
+    }
+    #heightimgs {
+      height: 100%;
+    }
+    .mybtns button {
+      color: white;
+      width: 14%;
+      height: 40px;
+      background: linear-gradient(
+        180deg,
+        rgba(59, 159, 241, 1) 0%,
+        rgba(40, 132, 207, 1) 100%
+      );
+      opacity: 0.99;
+      border-radius: 6px;
+      border: none;
+      margin-right: 10px;
+    }
+    .mybtns {
+      width: 1000px;
+      margin: 20px auto;
+    }
+    .bigtitle {
+      margin-left: 0px !important;
+      height: 46px;
+      line-height: 46px;
+      background-color: #f6f6f6;
+      margin-top: 10px;
+  
+      width: 100%;
+      padding-left: 22px;
+    }
+    .myimg {
+      position: absolute;
+      top: 50%;
+      left: 31px;
+      transform: translate(20px, -50%);
+    }
+    .written {
+      font-size: 16px;
+      color: white;
+    }
+    .writenword {
+      font-size: 16px;
+      color: white;
+    }
+    .counter {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .counter1 {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .counter2 {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .counter3 {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .box {
+      position: absolute;
+      top: 50%;
+      left: 105px;
+      transform: translate(0, -50%);
+    }
+    .mynum {
+      width: 100%;
+      height: 126px;
+      background: linear-gradient(
+        90deg,
+        rgba(17, 168, 227, 1) 0%,
+        rgba(57, 201, 245, 1) 45%,
+        rgba(3, 155, 221, 1) 100%
+      );
+      margin-top: 50px;
+      margin-left: 1px;
+      display: flex;
+      align-items: center;
+    }
+    .num {
+      border-right: 1px solid rgba(225, 225, 225, 0.8);
+    }
+  }
+  @media screen and (min-width: 700px) and (max-width: 1023px) {
+    .mybody {
+      width: 98%;
+      margin: 0 auto;
+    }
+    .boxishowlogin {
+      display: none;
+    }
+    .mybtns input {
+      width: 300px;
+      height: 40px;
+      margin-right: 50px;
+      text-indent: 2em;
+    }
+    .mybtns button {
+      color: white;
+      width: 80px;
+      height: 36px;
+      background: linear-gradient(
+        180deg,
+        rgba(59, 159, 241, 1) 0%,
+        rgba(40, 132, 207, 1) 100%
+      );
+      opacity: 0.99;
+      border-radius: 6px;
+      border: none;
+      margin-right: 10px;
+    }
+    .mybtns {
+      margin-bottom: 40px;
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 20px;
+      margin-left: 50px;
+    }
+    .myimg {
+      position: absolute;
+      top: 50%;
+      left: -3px;
+      transform: translate(20px, -50%);
+    }
+    .written {
+      font-size: 16px;
+      color: white;
+    }
+    .writenword {
+      font-size: 16px;
+      color: white;
+    }
+    .counter {
+      font-size: 27px;
+      font-weight: bold;
+    }
+    .counter1 {
+      font-size: 27px;
+      font-weight: bold;
+    }
+    .counter2 {
+      font-size: 27px;
+      font-weight: bold;
+    }
+    .counter3 {
+      font-size: 27px;
+      font-weight: bold;
+    }
+    .box {
+      position: absolute;
+      top: 50%;
+      left: 64px;
+      transform: translate(0, -50%);
+    }
+    .bigtitle {
+      display: none;
+    }
+    .mynum {
+      width: 100%;
+      height: 126px;
+      background: linear-gradient(
+        90deg,
+        rgba(17, 168, 227, 1) 0%,
+        rgba(57, 201, 245, 1) 45%,
+        rgba(3, 155, 221, 1) 100%
+      );
+      margin-top: 50px;
+      margin-left: 1px;
+      display: flex;
+      align-items: center;
+    }
+    .num {
+      border-right: 1px solid #ffffff;
+    }
+  }
+  @media screen and (max-width: 699px) {
+    .mybody {
+      width: 98%;
+      margin: 0 auto;
+    }
+    .boxishowlogin {
+      display: none;
+    }
+    .mybtns input {
+      width: 42%;
+      height: 40px;
+      margin-right: 20px;
+      text-indent: 1em;
+    }
+    #scrollleft {
+      overflow: hidden;
+      overflow-x: scroll;
+    }
+    #scrollleft > ul {
+      width: 700px;
+    }
+    #scrollleft_s {
+      overflow: hidden;
+      overflow-x: scroll;
+    }
+    #scrollleft_s > ul {
+      width: 590px;
+    }
+    div::-webkit-scrollbar {
+      display: none; /* 隐藏滚动条 */
+    }
+    .mybtns button {
+      color: white;
+      width: 60px;
+      height: 36px;
+      background: linear-gradient(
+        180deg,
+        rgba(59, 159, 241, 1) 0%,
+        rgba(40, 132, 207, 1) 100%
+      );
+      opacity: 0.99;
+      border-radius: 6px;
+      border: none;
+      margin-right: 10px;
+    }
+    .mybtns {
+      margin-bottom: 40px;
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+    .mynum {
+      width: 100%;
+  
+      background: linear-gradient(
+        90deg,
+        rgba(17, 168, 227, 1) 0%,
+        rgba(57, 201, 245, 1) 45%,
+        rgba(3, 155, 221, 1) 100%
+      );
+  
+      margin-left: 1px;
+    }
+    .myimg {
+      position: absolute;
+      top: 50%;
+      left: -3px;
+      transform: translate(20px, -50%);
+    }
+    .written {
+      font-size: 14px;
+      color: white;
+    }
+    .writenword {
+      font-size: 16px;
+      color: white;
+    }
+    .counter {
+      font-size: 23px;
+      font-weight: bold;
+    }
+    .counter1 {
+      font-size: 23px;
+      font-weight: bold;
+    }
+    .counter2 {
+      font-size: 23px;
+      font-weight: bold;
+    }
+    .counter3 {
+      font-size: 23px;
+      font-weight: bold;
+    }
+    .box {
+      position: absolute;
+      top: 50%;
+      left: 64px;
+      transform: translate(0, -50%);
+    }
+    .num {
+      border-right: 1px solid #ffffff;
+      border-bottom: 1px solid #ffffff;
+    }
+    .bigtitle {
+      display: none;
+    }
+  }
+  .bigtitle > div {
+    padding: 0;
+    margin: 0;
+  }
+  .list2 div {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mycontainer {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .btn1:hover {
+    background-color: #0e6fa4;
+  }
+  .btn2:hover {
+    background-color: #0e6fa4;
+  }
+  [v-cloak] {
+    display: none;
+  }
+  
+  .numb {
+    height: 111px;
+    position: relative;
+  }
+  
+  .item img {
+    width: 100%;
+    height: 100%;
+  }
+  .middle {
+    margin-top: 30px;
+  }
+  .cont1 {
+    width: 100%;
+  }
+  .lists li {
+    height: 46px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 46px;
+    border-bottom: 1px solid #dddddd;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .mytab {
+    border: 1px solid #dddddd;
+  }
+  .list2 {
+    list-style: none;
+    height: 462px;
+  }
+  .lists {
+    height: 322px;
+  }
+  .firsttitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .list2 li {
+    height: 46px;
+    line-height: 46px;
+    margin-left: 10px;
+  }
+  .caigou {
+    margin-top: 30px;
+    border: 1px solid #cccccc;
+  }
+  .gongshi {
+    margin-top: 30px;
+    border: 1px solid #cccccc;
+  }
+  .more1 {
+    margin-top: -30px;
+    margin-left: 87%;
+  }
+  .more2 {
+    margin-top: -31px;
+    margin-left: 87%;
+  }
+  .more1:hover {
+    cursor: pointer;
+  }
+  .more2:hover {
+    cursor: pointer;
+  }
+  .jianjie {
+    color: white;
+  }
+  .jianjie:hover {
+    color: aqua;
+  }
+  
+  .mydown li {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-bottom: 1px solid #33a0ed;
+  }
+  
+  .mydown li:hover {
+    cursor: pointer;
+    background-color: #0e6fa4;
+  }
+  footer {
+    background: #2984b7;
+    margin-top: 20px;
+  }
+  footer ul {
+    list-style: none;
+    margin-left: 20px;
+    margin-top: 20px;
+    color: white;
+    border-right: 1px solid #39b5d4;
+    height: 160px;
+  }
+  .words {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  footer li {
+    margin-top: 5px;
+  }
+  
+  .poi1:hover {
+    cursor: pointer;
+  }
+  .poi2:hover {
+    cursor: pointer;
+  }
+  .headline-bg.index-headline-bg {
+    height: 160px;
+    overflow: hidden;
+    background: -webkit-linear-gradient(top, #1a88dc, #3054db);
+    background: -moz-linear-gradient(top, #1a88dc, #3054db);
+    background: -o-linear-gradient(top, #1a88dc, #3054db);
+    background: -ms-linear-gradient(top, #1a88dc, #3054db);
+  }
+  
+  .mes {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+  }
+  .footer {
+    position: relative;
+    margin-top: 35px;
+  }
+  .mytitle1 > div {
+    font-weight: bold;
+  }
+  .beCenter {
+    text-align: center;
+    height: 40px;
+  }
+  .myname {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .poi1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .poi2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
