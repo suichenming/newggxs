@@ -14,42 +14,51 @@
         <button @click="searchProject" id="searchProject">搜项目</button>
         <button @click="searchCompany">搜企业</button>
       </div>
-      <div class="phonemiddle">
-        <div class="model_s" @click="modelishow" v-if="ishow"></div>
+      <div class="phonemiddle" v-loading="idloaings">
+         
         <div class="phonelist">
           <span class="firsttitle">项目公告</span>
           <button @click="btn" class="select">筛选</button>
           <div class="btn_s">
             <div class="row" style="font-weight:600;margin-left: 6%;">公告类型</div>
             <div class="row row_s">
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">全部</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">采购公告</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">变更公告</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">废标公告</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">结果公示</div>
+              <div
+                class="col-md-3 col-lg-3 col-xs-3 col-sm-3"
+                v-for="(item,index) in first"
+                :key="index"
+                @click="firsts(item.name,index)"
+                :style="{color: index === firstunm? '#028bcf' : '#333'}"
+              >{{item.name}}</div>
             </div>
             <div class="row" style="font-weight:600;margin-left: 6%;">项目类型</div>
             <div class="row row_s1">
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">全部</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">工程</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">货物</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">服务</div>
+              <div
+                class="col-md-3 col-lg-3 col-xs-3 col-sm-3"
+                v-for="(item,index) in second"
+                :key="index"
+                @click="seconds(item.name,index)"
+                :style="{color: index === secondunm? '#028bcf' : '#333'}"
+              >{{item.name}}</div>
             </div>
             <div class="row" style="font-weight:600;margin-left: 6%;">项目状态</div>
             <div class="row row_s2">
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">全部</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">进行中</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">已结束</div>
+              <div
+                class="col-md-3 col-lg-3 col-xs-3 col-sm-3"
+                v-for="(item,index) in third"
+                :key="index"
+                @click="thirds(item.name,index)"
+                :style="{color: index === thirdunm? '#028bcf' : '#333'}"
+              >{{item.name}}</div>
             </div>
             <div class="row" style="font-weight:600;margin-left: 6%;">预算金额</div>
             <div class="row row_s3">
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">不限</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">5万以内</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">5万-10万</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">10万-20万</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">20万-50万</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">50万-100万</div>
-              <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">100万以上</div>
+              <div
+                class="col-md-3 col-lg-3 col-xs-3 col-sm-3"
+                v-for="(item,index) in four"
+                :key="index"
+                @click="fours(item.name,index)"
+                :style="{color: index === fourunm? '#028bcf' : '#333'}"
+              >{{item.name}}</div>
             </div>
             <div class="row_s4" style="margin-top:20px">
               <div @click="removes" class="col-md-6 col-lg-6 col-xs-6 col-sm-6">清空</div>
@@ -61,54 +70,7 @@
             </div>
           </div>
         </div>
-        <div class="toggle">
-          <div>公告类型</div>
-          <div class="phonefirst">
-            <span>全部</span>
-            <span>采购公告</span>
-            <span>变更公告</span>
-            <span>废标公告</span>
-            <span>成交公告</span>
-            <span>招投标服务网公告</span>
-            <span>单一来源采购公告</span>
-          </div>
-          <div>项目类型</div>
-          <div class="phonesecond">
-            <span>全部</span>
-            <span>工程</span>
-            <span>货物</span>
-            <span>服务</span>
-          </div>
-          <div>项目状态</div>
-          <div class="phonethird">
-            <span>全部</span>
-            <span>进行中</span>
-            <span>已结束</span>
-          </div>
-          <div>预算金额</div>
-          <div class="phonefour">
-            <span>不限</span>
-            <span>5万以内</span>
-            <span>5万-10万</span>
-            <span>10万-20万</span>
-            <span>20万-50万</span>
-            <span>50万-100万</span>
-            <span>100万以上</span>
-          </div>
-          <div>
-            <button class="footbtn clearbtn">清空</button>
-            <button class="footbtn finishbtn">完成</button>
-          </div>
-        </div>
-        <div class="selected">
-          <div>已选择：</div>
-          <div>
-            <span></span>
-          </div>
-          <div>
-            <button>清空所有选项</button>
-          </div>
-        </div>
+
         <div v-for="(item,index) in phonelist " :key="index" class="phonetab" @click="detali(item)">
           <div class="phonetitle">{{item.title}}</div>
           <div class="phonecont">
@@ -130,24 +92,43 @@
         <div class="mytable">
           <ul class="first">
             <li>公告类型 |</li>
-            <li v-for="(item,index) in first" :key="index" @click="firsts(item.name,index)" :style="{color: index === firstunm? '#028bcf' : '#333'}">{{item.name}}</li>
+            <li
+              v-for="(item,index) in first"
+              :key="index"
+              @click="firsts(item.name,index)"
+              :style="{color: index === firstunm? '#028bcf' : '#333'}"
+            >{{item.name}}</li>
           </ul>
           <ul class="second">
             <li>项目类型 |</li>
-            <li v-for="(item,index) in second" :key="index" @click="seconds(item.name,index)" :style="{color: index === secondunm? '#028bcf' : '#333'}">{{item.name}}</li>
+            <li
+              v-for="(item,index) in second"
+              :key="index"
+              @click="seconds(item.name,index)"
+              :style="{color: index === secondunm? '#028bcf' : '#333'}"
+            >{{item.name}}</li>
           </ul>
           <ul class="third">
             <li>项目状态 |</li>
-             <li v-for="(item,index) in third" :key="index" @click="thirds(item.name,index)" :style="{color: index === thirdunm? '#028bcf' : '#333'}">{{item.name}}</li>
-           
+            <li
+              v-for="(item,index) in third"
+              :key="index"
+              @click="thirds(item.name,index)"
+              :style="{color: index === thirdunm? '#028bcf' : '#333'}"
+            >{{item.name}}</li>
           </ul>
           <ul class="four">
             <li>预算金额 |</li>
-            <li v-for="(item,index) in four" :key="index" @click="fours(item.name,index)" :style="{color: index === fourunm? '#028bcf' : '#333'}">{{item.name}}</li>
+            <li
+              v-for="(item,index) in four"
+              :key="index"
+              @click="fours(item.name,index)"
+              :style="{color: index === fourunm? '#028bcf' : '#333'}"
+            >{{item.name}}</li>
           </ul>
         </div>
         <div id="lists" style="text-align:center;font-size:20px"></div>
-        <div class="lists"  >
+        <div class="lists">
           <table class="table tab1" v-loading="loading">
             <tr class="tabs">
               <td class="td1">公告类型</td>
@@ -177,18 +158,17 @@
           <div id="paging" class="pagination"></div>
         </div>
         <div class="text-center">
-           <el-pagination
+          <el-pagination
             @current-change="handleCurrentChange"
             :current-page.sync="currentPage1"
             :page-size="1"
             layout="prev, pager, next"
-            :total="total">
-          </el-pagination>
+            :total="total"
+          ></el-pagination>
         </div>
       </div>
-      
     </div>
-     <foo-ter></foo-ter>
+    <foo-ter></foo-ter>
   </div>
 </template>
 
@@ -197,30 +177,43 @@ import { getSearchResultList } from "../services/list";
 export default {
   data() {
     return {
-      name: '',
+      name: "",
       ishow: false,
       phonelist: [],
       idloaing: false,
       list: [],
       first: [
-        {name: '全部'},{name: '采购公告'},{name: '变更公告'},{name: '废标公告'},{name: '结果公示'},{name: '单一来源采购公告'},{name: '招投标服务网公告'}
+        { name: "全部" },
+        { name: "采购公告" },
+        { name: "变更公告" },
+        { name: "废标公告" },
+        { name: "结果公示" },
+        { name: "单一来源采购公告" },
+        { name: "招投标服务网公告" }
       ],
       second: [
-        {name: '全部'},{name: '工程'},{name: '货物'},{name: '服务'},
+        { name: "全部" },
+        { name: "工程" },
+        { name: "货物" },
+        { name: "服务" }
       ],
-      third: [
-        {name: '全部'},{name: '进行中'},{name: '已结束'},
-      ],
+      third: [{ name: "全部" }, { name: "进行中" }, { name: "已结束" }],
       four: [
-        {name: '不限'},{name: '5万以内'},{name: '5万-10万'},{name: '10万-20万'},{name: '20万-50万'},{name: '50万-100万'},{name: '100万以上'},
+        { name: "不限" },
+        { name: "5万以内" },
+        { name: "5万-10万" },
+        { name: "10万-20万" },
+        { name: "20万-50万" },
+        { name: "50万-100万" },
+        { name: "100万以上" }
       ],
       firstunm: 0,
       secondunm: 0,
       thirdunm: 0,
       fourunm: 0,
-      blue:'blue',
-      lightblue:'lightblue',
-      obj:{
+      blue: "blue",
+      lightblue: "lightblue",
+      obj: {
         project_type: this.$store.state.gongshiStr,
         pageNo: 0,
         cate_id: "",
@@ -228,196 +221,310 @@ export default {
         moneyStr: "",
         gonggaoStr: this.$store.state.gonggaoStr,
         gongshiStr: this.$store.state.gongshiStr,
-        company_name: sessionStorage.getItem('searchTextxm'),
-        project_name: sessionStorage.getItem('searchText')
+        company_name: sessionStorage.getItem("searchTextxm"),
+        project_name: sessionStorage.getItem("searchText")
       },
       loading: true,
       currentPage1: 1,
-      total:null,
-      searchText: (sessionStorage.getItem('searchText') == null ) ? sessionStorage.getItem('searchTextxm') : sessionStorage.getItem('searchText')
+      total: null,
+      searchText:
+        sessionStorage.getItem("searchText") == null
+          ? sessionStorage.getItem("searchTextxm")
+          : sessionStorage.getItem("searchText"),
+      idloaings: true
     };
   },
   mounted() {
-    sessionStorage.clear()
-    var storename = this.$store.state.gonggaoStr
-    if(storename === ''){
-      storename = this.$store.state.gongshiStr
+    var _this = this;
+    if (
+      navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      )
+    ) {
+      $(window).on("scroll", function() {
+        if (
+          $(window).scrollTop() + 1 >
+          $(document.body).height() - $(window).height()
+        ) {
+          _this.obj.pageNo += 10;
+          _this.idloaings = true
+          getSearchResultList(_this.obj)
+            .then(item => {
+              _this.idloaings = false;
+              for (var i = 0; i < item.data.length; i++) {
+                _this.phonelist.push(item.data[i]);
+              }
+            })
+            .catch(error => {
+              _this.loading = false;_this.idloaings = false;
+            });
+        }
+      });
+    } else {
+      _this.idloaing = false;
     }
-    if(storename === '招投标服务网公告'){
-      this.name = '招投标服务网公告'
-      this.firstunm = 6
-    } else if(storename === '工程类公告'){
-      this.firstunm = 1
-      this.secondunm = 1
-    } else if(storename === '货物类公告'){
-      this.firstunm = 1
-      this.secondunm = 2
-    } else if(storename === '服务类公告'){
-      this.firstunm = 1
-      this.secondunm = 3
-    } else if(storename === '结果公示'){
-      this.firstunm = 4
-    }else if(storename === '废标公告'){
-      this.firstunm = 3
-    }else if(storename === '变更公告'){
-      this.firstunm = 2
-    }else if(storename === '单一来源采购公告'){
-      this.firstunm = 5
+    sessionStorage.clear();
+    var storename = this.$store.state.gonggaoStr;
+    if (storename === "") {
+      storename = this.$store.state.gongshiStr;
     }
-    getSearchResultList(this.obj).then(item => {
-        this.total = item.data[0].pagesNo
-        this.list = item.data
-        this.loading = false
-      }).catch(error => {this.loading = false});
+    if (storename === "招投标服务网公告") {
+      this.name = "招投标服务网公告";
+      this.firstunm = 6;
+    } else if (storename === "工程类公告") {
+      this.firstunm = 1;
+      this.secondunm = 1;
+    } else if (storename === "货物类公告") {
+      this.firstunm = 1;
+      this.secondunm = 2;
+    } else if (storename === "服务类公告") {
+      this.firstunm = 1;
+      this.secondunm = 3;
+    } else if (storename === "结果公示") {
+      this.firstunm = 4;
+    } else if (storename === "废标公告") {
+      this.firstunm = 3;
+    } else if (storename === "变更公告") {
+      this.firstunm = 2;
+    } else if (storename === "单一来源采购公告") {
+      this.firstunm = 5;
+    }
+    getSearchResultList(this.obj)
+      .then(item => {
+        this.total = item.data[0].pagesNo;
+        this.list = item.data;
+        this.phonelist = item.data;
+        this.loading = false;
+        this.idloaings = false
+      })
+      .catch(error => {
+        this.loading = false;
+      });
   },
   watch: {
-    list(newarr,old){
-      if(newarr.length == 0) {
+    list(newarr, old) {
+      if (newarr.length == 0) {
         $(".lists").hide();
         $("#lists").html("没有查询到相关数据!");
       } else {
         $(".lists").show();
-         $("#lists").html("");
+        $("#lists").html("");
       }
     }
   },
   methods: {
-    handleCurrentChange(val){
-      this.loading = true
-      if(val === 1) {
-        this.obj.pageNo = 0
+    handleCurrentChange(val) {
+      this.loading = true;
+      if (val === 1) {
+        this.obj.pageNo = 0;
       } else {
-        this.obj.pageNo = (val-1)*10
+        this.obj.pageNo = (val - 1) * 10;
       }
-      getSearchResultList(this.obj).then(item => {
-        var datas = item.data
-        this.list = datas
-        this.loading = false
-      }).catch(error => {this.loading = false});
+      getSearchResultList(this.obj)
+        .then(item => {
+          var datas = item.data;
+          this.list = datas;
+          this.loading = false;
+        })
+        .catch(error => {
+          this.loading = false;
+        });
     },
-    chiname(name) {  //  采购公告
-      if(name === '招投标服务网公告'){
-        this.firstunm = 6
-      } else if(name === '工程类公告'){
-        this.firstunm = 1
-        this.secondunm = 1
-      } else if(name === '货物类公告'){
-        this.firstunm = 1
-        this.secondunm = 2
-      } else if(name === '服务类公告'){
-        this.firstunm = 1
-        this.secondunm = 3
+    chiname(name) {
+      //  采购公告
+      if (name === "招投标服务网公告") {
+        this.firstunm = 6;
+      } else if (name === "工程类公告") {
+        this.firstunm = 1;
+        this.secondunm = 1;
+      } else if (name === "货物类公告") {
+        this.firstunm = 1;
+        this.secondunm = 2;
+      } else if (name === "服务类公告") {
+        this.firstunm = 1;
+        this.secondunm = 3;
       }
-      this.name = name
-      this.loading = true
-      this.obj.project_type = ''
-      this.obj.gonggaoStr = name
-      getSearchResultList(this.obj).then(item => {
-        this.total = item.data[0].pagesNo
-        this.list = item.data
-        this.loading = false
-      }).catch(error => {this.loading = false})
+      this.name = name;
+      this.loading = true;
+      this.obj.project_type = "";
+      this.obj.gonggaoStr = name;
+      getSearchResultList(this.obj)
+        .then(item => {
+          this.total = item.data[0].pagesNo;
+          this.list = item.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          this.loading = false;
+        });
     },
-    chinames(name){  //  结果公示
-      if(name === '结果公示'){
-        this.firstunm = 4
-      }else if(name === '废标公告'){
-        this.firstunm = 3
-      }else if(name === '变更公告'){
-        this.firstunm = 2
-      }else if(name === '单一来源采购公告'){
-        this.firstunm = 5
+    chinames(name) {
+      //  结果公示
+      if (name === "结果公示") {
+        this.firstunm = 4;
+      } else if (name === "废标公告") {
+        this.firstunm = 3;
+      } else if (name === "变更公告") {
+        this.firstunm = 2;
+      } else if (name === "单一来源采购公告") {
+        this.firstunm = 5;
       }
-      this.name = name
-      this.obj.project_type = name
-      this.obj.gonggaoStr = name
-      this.loading = true
-      getSearchResultList(this.obj).then(item => {
-        this.total = item.data[0].pagesNo
-        this.list = item.data
-        this.loading = false
-      }).catch(error => {this.loading = false})
+      this.name = name;
+      this.obj.project_type = name;
+      this.obj.gonggaoStr = name;
+      this.loading = true;
+      getSearchResultList(this.obj)
+        .then(item => {
+          this.total = item.data[0].pagesNo;
+          this.list = item.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          this.loading = false;
+        });
     },
     searchProject() {
-      this.loading = true
-      var name =  $("#searchText").val();
-      this.obj.project_name = name
-      getSearchResultList(this.obj).then(item => {
-        this.total = item.data[0].pagesNo
-        var datas = item.data
-        this.list = datas
-        this.loading = false
-      }).catch(error => {this.loading = false})
+      this.loading = true;
+      var name = $("#searchText").val();
+      this.obj.project_name = name;
+      getSearchResultList(this.obj)
+        .then(item => {
+          this.total = item.data[0].pagesNo;
+          var datas = item.data;
+          this.list = datas;
+          this.loading = false;
+        })
+        .catch(error => {
+          this.loading = false;
+        });
     },
-    searchCompany(){
-      this.loading = true
-      var name =  $("#searchText").val();
-      this.obj.company_name = name
-      getSearchResultList(this.obj).then(item => {
-        this.total = item.data[0].pagesNo
-        var datas = item.data
-        this.list = datas
-        this.loading = false
-      }).catch(error => {this.loading = false})
+    searchCompany() {
+      this.loading = true;
+      var name = $("#searchText").val();
+      this.obj.company_name = name;
+      getSearchResultList(this.obj)
+        .then(item => {
+          this.total = item.data[0].pagesNo;
+          var datas = item.data;
+          this.list = datas;
+          this.loading = false;
+        })
+        .catch(error => {
+          this.loading = false;
+        });
     },
-    firsts(name,index){
-      this.name = name
-      this.loading = true
-      this.firstunm = index
-      this.obj.project_type = name
-      getSearchResultList(this.obj).then(item => {
-        this.total = item.data[0].pagesNo
-        this.list = item.data
-        this.loading = false
-      }).catch(error => {this.loading = false})
+    firsts(name, index) {
+      this.name = name;
+      this.loading = true;
+      this.firstunm = index;
+      this.obj.project_type = name;
+      getSearchResultList(this.obj)
+        .then(item => {
+          this.phonelist = item.data
+          this.total = item.data[0].pagesNo;
+          this.list = item.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          this.loading = false;
+        });
     },
-    seconds(name,index){
-      this.secondunm = index
-      this.loading = true
-      this.obj.cate_id = name
-      getSearchResultList(this.obj).then(item => {
-        this.total = item.data[0].pagesNo
-        this.list = item.data
-        this.loading = false
-      }).catch(error => {this.loading = false})
+    seconds(name, index) {
+      this.secondunm = index;
+      this.loading = true;
+      this.obj.cate_id = name;
+      getSearchResultList(this.obj)
+        .then(item => {
+          this.phonelist = item.data
+          this.total = item.data[0].pagesNo;
+          this.list = item.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          this.loading = false;
+        });
     },
-    thirds(name,index){
-      this.loading = true
-      this.thirdunm = index
-      this.obj.dateState = name
-      getSearchResultList(this.obj).then(item => {
-        this.total = item.data[0].pagesNo
-        this.list = item.data
-        this.loading = false
-      }).catch(error => {this.loading = false})
+    thirds(name, index) {
+      this.loading = true;
+      this.thirdunm = index;
+      this.obj.dateState = name;
+      getSearchResultList(this.obj)
+        .then(item => {
+          this.phonelist = item.data
+          this.total = item.data[0].pagesNo;
+          this.list = item.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          this.loading = false;
+        });
     },
-    fours(name,index){
-      this.fourunm = index
-      this.loading = true
-      this.obj.moneyStr = name
-      getSearchResultList(this.obj).then(item => {
-        this.total = item.data[0].pagesNo
-        this.list = item.data
-        this.loading = false
-      }).catch(error => {this.loading = false})
+    fours(name, index) {
+      this.fourunm = index;
+      this.loading = true;
+      this.obj.moneyStr = name;
+      getSearchResultList(this.obj)
+        .then(item => {
+          this.phonelist = item.data
+          this.total = item.data[0].pagesNo;
+          this.list = item.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          this.loading = false;
+        });
     },
-    modelishow() {},
-    btn() {},
-    removes() {},
-    overs() {},
-    detailClick() {}
+    btn() {
+      var h = $(".btn_s").height();
+      if (h === 0) {
+        $(".btn_s")
+          .stop(true)
+          .animate({ maxHeight: "500" }, 300);
+        this.ishow = true;
+      } else {
+        $(".btn_s")
+          .stop(true)
+          .animate({ maxHeight: "0" }, 300);
+        this.ishow = false;
+      }
+    },
+    removes() {
+      this.firstunm= 0
+      this.secondunm= 0
+      this.thirdunm= 0
+      this.fourunm= 0
+      getSearchResultList()
+        .then(item => {
+          this.phonelist = item.data
+          this.total = item.data[0].pagesNo;
+          this.list = item.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          this.loading = false;
+        });
+    },
+    overs() {
+      this.ishow = false;
+      $(".btn_s").stop(true).animate({maxHeight:"0"},300);
+    },
+    detailClick(item) {
+      console.log(item)
+    },
+    detali(item){
+      console.log(item)
+    }
   }
 };
-
 </script>
 <style scoped>
 /**头部**/
 
 @media screen and (min-width: 1024px) {
- .table > tr > td{
-   padding: 8px;
-   border-top: 1px solid #ddd;
- }
+  .table > tr > td {
+    padding: 8px;
+    border-top: 1px solid #ddd;
+  }
   .mybtns {
     /* margin-bottom: 40px; */
     width: 1000px;
@@ -463,10 +570,10 @@ export default {
   }
 }
 @media screen and (min-width: 700px) and (max-width: 1023px) {
-  .table > tr > td{
-   padding: 8px;
-   border-top: 1px solid #ddd;
- }
+  .table > tr > td {
+    padding: 8px;
+    border-top: 1px solid #ddd;
+  }
   .mybtns {
     margin-bottom: 40px;
     /*  width: 1000px; */
@@ -593,18 +700,10 @@ export default {
     background: red;
     background: #d9d9f3;
     border-radius: 6px;
+    font-size: 12px
   }
 
-  .phonemiddle .model_s {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 40px;
-    left: 0;
-    background: #000;
-    z-index: 2;
-    opacity: 0.2;
-  }
+ 
   .phonemiddle {
     margin-right: 10px;
     margin-left: 10px;

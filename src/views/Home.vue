@@ -53,7 +53,6 @@
         </div>
       </div>
 
-
       <div class="middle row">
         <div class="photoalbum col-md-6 col-lg-6 col-xs-12 col-sm-12">
           <div id="carouselExampleGeneric" class="carousel slide">
@@ -93,8 +92,13 @@
           <div class="mytab" style="height:433px">
             <!-- Nav tabs -->
             <ul class="navs nav-tabs" role="tablist" id="mytab1">
-              <li v-for="(item,index) in mytab1" :key='index' @click="tab1click(index)"  :style="{background: index=== num ? '#3694EB' : ''}" >
-                <a :style="{color :index=== num ? '#fff': '#3694EB'}" >{{item.name}}</a>
+              <li
+                v-for="(item,index) in mytab1"
+                :key="index"
+                @click="tab1click(index)"
+                :style="{background: index=== num ? '#3694EB' : ''}"
+              >
+                <a :style="{color :index=== num ? '#fff': '#3694EB'}">{{item.name}}</a>
               </li>
               <li class="more1" @click="viewList()" style="float:right;paddingRight:16px">更多></li>
             </ul>
@@ -124,16 +128,26 @@
       <div class="caigou">
         <div id="scrollleft">
           <ul class="navs nav-tabs" role="tablist" id="mytab2">
-            <li v-for="(item,index) in caigou" :key='index' @click="caigouclick(index)"  :style="{background: index=== nums ? '#3694EB' : ''}" >
-                <a :style="{color :index=== nums ? '#fff': '#3694EB'}" >{{item.name}}</a>
-              </li>
+            <li
+              v-for="(item,index) in caigou"
+              :key="index"
+              @click="caigouclick(index)"
+              :style="{background: index=== nums ? '#3694EB' : ''}"
+            >
+              <a :style="{color :index=== nums ? '#fff': '#3694EB'}">{{item.name}}</a>
+            </li>
             <li class="more2" @click="searchAll()" style="padding-left:10px">更多></li>
           </ul>
         </div>
 
         <!-- Tab panes -->
-        <div class="tab-content cont1" >
-          <div role="tabpanel" class="tab-pane active" id="cai" v-if="nums === 0 || nums === 1 || nums === 2 || nums === 3">
+        <div class="tab-content cont1">
+          <div
+            role="tabpanel"
+            class="tab-pane active"
+            id="cai"
+            v-if="nums === 0 || nums === 1 || nums === 2 || nums === 3"
+          >
             <div class="row bigtitle mytitle1">
               <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6">项目名称</div>
               <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">预算金额</div>
@@ -158,8 +172,8 @@
               </li>
             </ul>
           </div>
-          <div role="tabpanel"   v-if="nums === 4">
-            <div class="row bigtitle mytitle1" >
+          <div role="tabpanel" v-if="nums === 4">
+            <div class="row bigtitle mytitle1">
               <div class="col-md-10 col-lg-10 col-xs-10 col-sm-10">项目名称</div>
               <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">发布时间</div>
             </div>
@@ -177,7 +191,7 @@
             </ul>
           </div>
           <div role="tabpanel" v-if="nums === 5">
-            <div class="row bigtitle mytitle1" >
+            <div class="row bigtitle mytitle1">
               <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6">项目名称</div>
               <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">组织单位</div>
               <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">公示时间</div>
@@ -200,59 +214,68 @@
           </div>
         </div>
       </div>
-       <div class="gongshi">
-            	<div id="scrollleft_s">
-            		 <ul class="navs nav-tabs" role="tablist" id="mytab3">
-                    <li v-for="(item,index) in gongshi" :key='index' @click="jieclick(index)"  :style="{background: index=== numjie ? '#3694EB' : ''}" >
-                      <a :style="{color :index=== numjie ? '#fff': '#3694EB'}" >{{item.name}}</a>
-                    </li>
-                    <li class="more2" @click="searchAll()" style="padding-left:10px">更多></li>
-                  </ul>
-            	</div>
-                  <!-- Tab panes -->
-                  <div class="tab-content cont1">
-                    <div role="tabpanel" class="tab-pane active" id="gong">
-                        <div class="row bigtitle mytitle1">
-                            <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6">
-                              	 项目名称
-                            </div>
-                            <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
-                           	    组织单位
-                            </div>
-                            <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
-                            	 公示日期
-                            </div>
-                            <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
-                               	 公示类型
-                            </div>
-                        </div>
-                        <ul class="list2">
-                        	<li class="aaaa" v-if="flag">没有查询到相关数据！</li>
-                            <li v-for="(item,index) in gongshilist" :key='index' class="row poi1" @click="details(item)">
-                                <div class="col-md-6 col-lg-6 col-xs-11 col-sm-11 firsttitle">
-	                                {{item.title}}
-	                            </div>
-	                            <div class="col-md-2 col-lg-2 col-xs-4 col-sm-4 myname">
-	                                {{item.mechanism_name}}
-	                            </div>
-	                            <div class="col-md-2 col-lg-2 col-xs-8 col-sm-8">
-	                                {{item.publicity_start_date}}
-	                            </div>
-	                            <div class="col-md-2 col-lg-2 col-xs-4 col-sm-4">
-	                                {{item.gongao_type}}
-	                            </div>
-                            </li>
-                        </ul>
-                    </div>
-                  </div>
+      <div class="gongshi">
+        <div id="scrollleft_s">
+          <ul class="navs nav-tabs" role="tablist" id="mytab3">
+            <li
+              v-for="(item,index) in gongshi"
+              :key="index"
+              @click="jieclick(index)"
+              :style="{background: index=== numjie ? '#3694EB' : ''}"
+            >
+              <a :style="{color :index=== numjie ? '#fff': '#3694EB'}">{{item.name}}</a>
+            </li>
+            <li class="more2" @click="searchAll()" style="padding-left:10px">更多></li>
+          </ul>
+        </div>
+        <!-- Tab panes -->
+        <div class="tab-content cont1">
+          <div role="tabpanel" class="tab-pane active" id="gong">
+            <div class="row bigtitle mytitle1">
+              <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6">项目名称</div>
+              <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">组织单位</div>
+              <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">公示日期</div>
+              <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">公示类型</div>
             </div>
+            <ul class="list2">
+              <li class="aaaa" v-if="flag">没有查询到相关数据！</li>
+              <li
+                v-for="(item,index) in gongshilist"
+                :key="index"
+                class="row poi1"
+                @click="details(item)"
+              >
+                <div class="col-md-6 col-lg-6 col-xs-11 col-sm-11 firsttitle">{{item.title}}</div>
+                <div class="col-md-2 col-lg-2 col-xs-4 col-sm-4 myname">{{item.mechanism_name}}</div>
+                <div class="col-md-2 col-lg-2 col-xs-8 col-sm-8">{{item.publicity_start_date}}</div>
+                <div class="col-md-2 col-lg-2 col-xs-4 col-sm-4">{{item.gongao_type}}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
     <foo-ter></foo-ter>
   </div>
 </template>
 <script>
-
-import {startNotice,finishNotice,viewNotice,zcfgNotice,gzjggdNotice,cgNotice,gcNotice,hwNotice,fwNotice,simpleNotice,singleSourceNotice,allNotice,cjNotice,fbNotice,bgNotice} from '../services/home.js'
+import {
+  startNotice,
+  finishNotice,
+  viewNotice,
+  zcfgNotice,
+  gzjggdNotice,
+  cgNotice,
+  gcNotice,
+  hwNotice,
+  fwNotice,
+  simpleNotice,
+  singleSourceNotice,
+  allNotice,
+  cjNotice,
+  fbNotice,
+  bgNotice
+} from "../services/home.js";
 export default {
   name: "home",
   data() {
@@ -269,213 +292,249 @@ export default {
       simplelist: [],
       gonglist4: [],
       gongshilist: [],
-      counter1: '',
-      counter: '',
-      counter2: '',
-      counter3: '',
-      num:0,
-      nums:0,
+      counter1: "",
+      counter: "",
+      counter2: "",
+      counter3: "",
+      num: 0,
+      nums: 0,
       mytab1: [
-        {name: '新闻动态'},{name: '法律法规'},{name: '国资监管规定'},
+        { name: "新闻动态" },
+        { name: "法律法规" },
+        { name: "国资监管规定" }
       ],
-      caigou:[
-        {name: '采购公告'},{name: '工程类'},{name: '货物类'},{name: '服务类'},{name: '招投标服务网公告'},{name: '单一来源采购公告'}
+      caigou: [
+        { name: "采购公告" },
+        { name: "工程类" },
+        { name: "货物类" },
+        { name: "服务类" },
+        { name: "招投标服务网公告" },
+        { name: "单一来源采购公告" }
       ],
-      gongshi:[
-        {name: '结果公示'},{name: '成交公示'},{name: '废标公告'},{name: '变更公告'},
+      gongshi: [
+        { name: "结果公示" },
+        { name: "成交公示" },
+        { name: "废标公告" },
+        { name: "变更公告" }
       ],
       numjie: 0
     };
   },
-   mounted() {
-     startNotice().then(result => {
-       this.counter = result.number
-          this.counter1 = result.money
-     })
-      finishNotice().then(result => {
-        this.counter2 = result.number
-        this.counter3 = result.money
-      })
-      this.tab1click(0)
-      this.caigouclick(0)
-      this.jieclick(0)
-    },
-    methods: {
-      tab1click(index){
-        this.num = index
-        if(index === 0){
-          viewNotice().then(res => {
-            var item = res.data
-            if(item.length > 0) {
-              this.news = item
-              this.flag8 = false
-            } else {
-              this.flag8 = true
-              this.news = []
-            }
-          })
-        } else if(index === 1) {
-          zcfgNotice().then(item => {
-            var data = item.data
-            if(data.length > 0){
-              this.news = data
-              this.flag8 =false
-            } else {
-              this.flag8 =  true
-              this.news = []
-            }
-          })
-        } else if(index === 2) {
-          gzjggdNotice().then(data => {
-            if(data.length > 0){
-              this.news = data
-              this.flag8 =false
-            } else {
-              this.flag8 =  true
-              this.news = []
-            }
-          })
-        }
-      },
-      caigouclick(index){
-        this.nums = index
-        if(index === 0){
-          cgNotice().then(item => {
-            if(item.length > 0){
-              this.flag4 = false
-              this.caigoulist = item
-            } else {
-              this.flag4 = true
-              this.caigoulist = []
-            }
-          })
-        } else if(index === 1) {
-          gcNotice().then(item => {
-            if(item.length > 0){
-              this.flag4 = false
-              this.caigoulist = item
-            } else {
-              this.flag4 = true
-              this.caigoulist = []
-            }
-          })
-        } else if(index === 2) {
-          hwNotice().then(item => {
-            if(item.length > 0){
-              this.flag4 = false
-              this.caigoulist = item
-            } else {
-              this.flag4 = true
-              this.caigoulist = []
-            }
-          })
-        } else if(index === 3) {
-          fwNotice().then(item => {
-            if(item.length > 0){
-              this.flag4 = false
-              this.caigoulist = item
-            } else {
-              this.flag4 = true
-              this.caigoulist = []
-            }
-          })
-        } else if(index === 4 && this.simplelist.length == 0) {
-          simpleNotice().then(item =>{
-            if(item.length > 0) {
-              this.flag0 = false
-              this.simplelist = item
-            } else {
-              this.flag0 = true
-              this.simplelist = []
-            }
-          })
-        } else if(index === 5 && this.gonglist4.length == 0) {
-          singleSourceNotice().then(item => {
-            if(item.length > 0) {
-              this.flag11 = false
-              this.gonglist4 = item
-            } else {
-              this.flag11 = true
-              this.gonglist4 = []
-            }
-          })
-        }
-      },
-      jieclick(index){
-        this.numjie = index
-        if(index === 0) {
-          allNotice().then(item => {
-            if(item.length > 0) {
-              this.gongshilist = item
-              this.flag = false
-            } else {
-              this.gongshilist = []
-              this.flag = true
-            }
-          })
-        } else if(index === 1) {
-          cjNotice().then(item => {
-            if(item.length > 0) {
-              this.gongshilist = item
-              this.flag = false
-            } else {
-              this.gongshilist = []
-              this.flag = true
-            }
-          })
-        } else if(index === 2) {
-          fbNotice().then(item => {
-            if(item.length > 0) {
-              this.gongshilist = item
-              this.flag = false
-            } else {
-              this.gongshilist = []
-              this.flag = true
-            }
-          })
-        } else if(index === 3) {
-          bgNotice().then(item => {
-            if(item.length > 0) {
-              this.gongshilist = item
-              this.flag = false
-            } else {
-              this.gongshilist = []
-              this.flag = true
-            }
-          })
-        }
-      },
-      searchXM(){
-        var searchText = $("#searchText").val();
-        sessionStorage.setItem('searchText',searchText)
-        this.$router.push({path: '/list'})
-      },
-      searchQY(){
-        var searchText = $("#searchText").val();
-        sessionStorage.setItem('searchTextxm',searchText)
-        this.$router.push({path: '/list'})
-      },
-      viewList(){
-        this.$router.push({path: '/newlist'})
-      },
-      searchAll(){
-        this.$router.push({path: '/list'})
-      },
-      detail(item){
-        console.log(item)
-        this.$router.push({path: '/details'})
-      },
-      details(item){
-        console.log(item)
-        //this.$router.push({path: '/details'})
+  mounted() {
+    startNotice().then(result => {
+      this.counter = result.number;
+      this.counter1 = result.money;
+    });
+    finishNotice().then(result => {
+      this.counter2 = result.number;
+      this.counter3 = result.money;
+    });
+    this.tab1click(0);
+    this.caigouclick(0);
+    this.jieclick(0);
+  },
+  methods: {
+    tab1click(index) {
+      this.num = index;
+      if (index === 0) {
+        viewNotice().then(res => {
+          var item = res.data;
+          if (item.length > 0) {
+            this.news = item;
+            this.flag8 = false;
+          } else {
+            this.flag8 = true;
+            this.news = [];
+          }
+        });
+      } else if (index === 1) {
+        zcfgNotice().then(item => {
+          var data = item.data;
+          if (data.length > 0) {
+            this.news = data;
+            this.flag8 = false;
+          } else {
+            this.flag8 = true;
+            this.news = [];
+          }
+        });
+      } else if (index === 2) {
+        gzjggdNotice().then(data => {
+          if (data.length > 0) {
+            this.news = data;
+            this.flag8 = false;
+          } else {
+            this.flag8 = true;
+            this.news = [];
+          }
+        });
       }
     },
+    caigouclick(index) {
+      this.nums = index;
+      if (index === 0) {
+        cgNotice().then(item => {
+          if (item.length > 0) {
+            this.flag4 = false;
+            this.caigoulist = item;
+          } else {
+            this.flag4 = true;
+            this.caigoulist = [];
+          }
+        });
+      } else if (index === 1) {
+        gcNotice().then(item => {
+          if (item.length > 0) {
+            this.flag4 = false;
+            this.caigoulist = item;
+          } else {
+            this.flag4 = true;
+            this.caigoulist = [];
+          }
+        });
+      } else if (index === 2) {
+        hwNotice().then(item => {
+          if (item.length > 0) {
+            this.flag4 = false;
+            this.caigoulist = item;
+          } else {
+            this.flag4 = true;
+            this.caigoulist = [];
+          }
+        });
+      } else if (index === 3) {
+        fwNotice().then(item => {
+          if (item.length > 0) {
+            this.flag4 = false;
+            this.caigoulist = item;
+          } else {
+            this.flag4 = true;
+            this.caigoulist = [];
+          }
+        });
+      } else if (index === 4 && this.simplelist.length == 0) {
+        simpleNotice().then(item => {
+          if (item.length > 0) {
+            this.flag0 = false;
+            this.simplelist = item;
+          } else {
+            this.flag0 = true;
+            this.simplelist = [];
+          }
+        });
+      } else if (index === 5 && this.gonglist4.length == 0) {
+        singleSourceNotice().then(item => {
+          if (item.length > 0) {
+            this.flag11 = false;
+            this.gonglist4 = item;
+          } else {
+            this.flag11 = true;
+            this.gonglist4 = [];
+          }
+        });
+      }
+    },
+    jieclick(index) {
+      this.numjie = index;
+      if (index === 0) {
+        allNotice().then(item => {
+          if (item.length > 0) {
+            this.gongshilist = item;
+            this.flag = false;
+          } else {
+            this.gongshilist = [];
+            this.flag = true;
+          }
+        });
+      } else if (index === 1) {
+        cjNotice().then(item => {
+          if (item.length > 0) {
+            this.gongshilist = item;
+            this.flag = false;
+          } else {
+            this.gongshilist = [];
+            this.flag = true;
+          }
+        });
+      } else if (index === 2) {
+        fbNotice().then(item => {
+          if (item.length > 0) {
+            this.gongshilist = item;
+            this.flag = false;
+          } else {
+            this.gongshilist = [];
+            this.flag = true;
+          }
+        });
+      } else if (index === 3) {
+        bgNotice().then(item => {
+          if (item.length > 0) {
+            this.gongshilist = item;
+            this.flag = false;
+          } else {
+            this.gongshilist = [];
+            this.flag = true;
+          }
+        });
+      }
+    },
+    searchXM() {
+      var searchText = $("#searchText").val();
+      sessionStorage.setItem("searchText", searchText);
+      this.$router.push({ path: "/list" });
+    },
+    searchQY() {
+      var searchText = $("#searchText").val();
+      sessionStorage.setItem("searchTextxm", searchText);
+      this.$router.push({ path: "/list" });
+    },
+    viewList() {
+      this.$router.push({ path: "/newlist" });
+    },
+    searchAll() {
+      this.$router.push({ path: "/list" });
+    },
+    detail(item) {
+      sessionStorage.setItem("articleID", item.articleID);
+      this.$router.push({ path: "/details" });
+    },
+    details(item) {
+      var name = item.gongao_type.replace("示", "告");
+      var strUrl = ''
+      if (name == "采购公告") {
+        strUrl += "cggg";
+      }
+      if (name.indexOf("变更") != -1) {
+        strUrl += "bggg";
+      }
+      if (name.indexOf("废标") != -1) {
+        strUrl += "fbgg";
+      }
+      if (name.indexOf("成交") != -1) {
+        strUrl += "cjgg";
+      }
+      if (name.indexOf("单一来源") != -1) {
+        strUrl += "dyly";
+      }
+      var objs = {
+        gongao_type: strUrl,
+        noticeId: item.id
+      };
+      sessionStorage.setItem("obj", JSON.stringify(objs));
+      if (item.gongao_type === "变更公示") {
+        this.$router.push({ path: "/detail" });
+      } else if (item.gongao_type === "废标公示") {
+        this.$router.push({ path: "/detail2" });
+      } else {
+        this.$router.push({ path: "/detail" });
+      }
+    },
+    gzjgDetails(item) {
+      console.log(item.pdf_annex, 1);
+    }
+  }
 };
 </script>
-<style scoped>
-/* @import '../../public/static/css/home.css'; */
-
-</style>
 
 <style src="../../public/static/css/home.css" scoped>
 </style>

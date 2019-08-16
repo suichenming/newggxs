@@ -347,10 +347,6 @@
   .btn2:hover {
     background-color: #0e6fa4;
   }
-  [v-cloak] {
-    display: none;
-  }
-  
   .numb {
     height: 111px;
     position: relative;

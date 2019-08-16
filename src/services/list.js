@@ -19,3 +19,31 @@ export function getViewSearchResultList(objparams){
         })
     })
 }
+
+//  details页面的接口
+export function detailsNotice(objparams){
+    let postData = qs.stringify(objparams)
+    return new Promise((reslove,reiect) => {
+        axios.post('./indexNotice/detailsNotice',postData,{headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}}).then(res => {
+            reslove(res)
+        })
+    })
+}
+
+//  detail页面的接口
+export function noticeDetail(objparams){
+    let postData = qs.stringify(objparams)
+    return new Promise((reslove,reiect) => {
+        axios.post('./trade/noticeDetail',postData,{headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}}).then(res => {
+            reslove(res)
+        })
+    })
+}
+export function queryXGNotice(objparams){
+    let postData = qs.stringify(objparams)
+    return new Promise((reslove,reiect) => {
+        axios.post('./trade/queryXGNotice',postData,{headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}}).then(res => {
+            reslove(res)
+        })
+    })
+}

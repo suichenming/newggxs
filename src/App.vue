@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
     <router-view></router-view>
   </div>
 </template>
@@ -14,9 +14,12 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
+<style  scoped>
 #app{
   overflow: hidden;
+}
+[v-cloak]{
+  display: none
 }
 
 </style>

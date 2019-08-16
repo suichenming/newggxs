@@ -15,6 +15,8 @@ import navheader from './components/header.vue'
 Vue.component('navheader', navheader);
 import footer from './components/footer.vue'
 Vue.component('FooTer', footer);
+import shares from './components/shares.vue'
+Vue.component('shares', shares);
 Vue.use(ElementUI)
 
 if (process.env.NODE_ENV === 'production') {
@@ -24,7 +26,13 @@ if (process.env.NODE_ENV === 'production') {
 }
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
-
+// axios.interceptors.request.use(function (config) {
+//   // Do something before request is sent
+//   console.log(config)
+//   return config;
+// }, function (error) {
+//   return Promise.reject(error);
+// });
 // router.beforeEach((to,from,next) =>{
 //   console.log(to.path)
 //   // if(to.path === '/'){

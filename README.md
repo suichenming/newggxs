@@ -65,3 +65,8 @@ methods:{
 	    document.body.appendChild(s);
  
 	},
+	/ if (process.env.NODE_ENV === 'production') {
+        //     urls = '../../public/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5); // 线上ip
+        // } else {
+        //     urls = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5);  // 本地开发ip
+        // }

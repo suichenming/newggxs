@@ -145,6 +145,11 @@ export default {
     };
   },
   mounted() {
+    $("#menu")
+    .leftMenu({
+      triggerBtn: ".btnss"
+    })
+    .init();
   },
   methods:{
     toplist(name){
@@ -191,11 +196,7 @@ export default {
   }
 };
 $(function($) {
-  $("#menu")
-    .leftMenu({
-      triggerBtn: ".btnss"
-    })
-    .init();
+  
 });
 </script>
 <style scoped>

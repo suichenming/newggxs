@@ -5,6 +5,8 @@ import Home from '../views/Home.vue'
 import List from '../views/list.vue'
 import Newlist from '../views/Newlist.vue'
 import details from '../views/details.vue'
+import detail from '../views/detail.vue'
+import detail2 from '../views/detail2.vue'
 Vue.use(Router)
 export default new Router({
   //mode: 'history',
@@ -30,6 +32,16 @@ export default new Router({
       path: '/details',
       name: 'details',
       component: details
+    },
+    {
+      path: '/detail',
+      name: 'detail',
+      component: detail
+    },
+    {
+      path: '/detail2',
+      name: 'detail2',
+      component: detail2
     },
     {
       path: '**',
