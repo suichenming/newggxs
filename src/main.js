@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '../scss/home/index.css'
 import $ from 'jquery'
 import "bootstrap"
+import "bootstrap/dist/css/bootstrap.css"
 
 
 

@@ -8,59 +8,59 @@
     <div id="menu">
       <div class="f1">
         <ul>
-          <li>
-            <a href="index">首页</a>
+          <li @click="toplist('首页')">
+            <a  >首页</a>
           </li>
           <li class="hasChild">
-            <a href="#">采购公告</a>
+            <a  >采购公告</a>
             <div class="f2">
               <ul>
-                <li>
-                  <a href="#" onclick="phoneclickme();">工程类公告</a>
+                <li  @click="topchilr('工程类公告')">
+                  <a  >工程类公告</a>
                 </li>
-                <li>
-                  <a href="#" onclick="phoneclickme1();">货物类公告</a>
+                <li @click="topchilr('货物类公告')">
+                  <a >货物类公告</a>
                 </li>
-                <li>
-                  <a href="#" onclick="phoneclickme2();">服务类公告</a>
+                <li @click="topchilr('服务类公告')">
+                  <a  >服务类公告</a>
                 </li>
-                <li>
-                  <a href="#" onclick="phoneclickNotice();">招投标服务网公告</a>
+                <li @click="topchilr('招投标服务网公告')">
+                  <a >招投标服务网公告</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="hasChild">
-            <a href="#">结果公示</a>
+            <a  >结果公示</a>
             <div class="f2">
               <ul>
-                <li>
-                  <a href="#" onclick="phoneclickme3();">结果公示</a>
+                <li @click="topchilr('结果公示')">
+                  <a >结果公示</a>
                 </li>
-                <li>
-                  <a href="#" onclick="phoneclickme4();">废标公告</a>
+                <li @click="topchilr('废标公告')">
+                  <a  >废标公告</a>
                 </li>
-                <li>
-                  <a href="#" onclick="phoneclickme5();">变更公告</a>
+                <li @click="topchilr('变更公告')">
+                  <a >变更公告</a>
                 </li>
-                <li>
-                  <a href="#" onclick="phoneclickme6();">单一来源采购公告</a>
+                <li @click="topchilr('单一来源采购公告')">
+                  <a >单一来源采购公告</a>
                 </li>
               </ul>
             </div>
           </li>
-          <li>
-            <a href="#" onclick="phonesearchZCFG()">法律法规</a>
+          <li @click="toplist('法律法规')">
+            <a >法律法规</a>
           </li>
-          <li>
-            <a href="#" onclick="phonesearchgzjggd()">国资监管规定</a>
+          <li @click="toplist('国资监管规定')">
+            <a>国资监管规定</a>
           </li>
-          <li>
-            <a href="#" onclick="phonesearchXWDT()">新闻动态</a>
+          <li @click="toplist('新闻动态')">
+            <a>新闻动态</a>
           </li>
-          <li>
-            <a href="#">业务指南</a>
-          </li>
+          <!-- <li @click="toplist('业务指南')">
+            <a >业务指南</a>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -145,29 +145,32 @@ export default {
     };
   },
   mounted() {
-    $("#menu")
-    .leftMenu({
+    $("#menu").leftMenu({
       triggerBtn: ".btnss"
-    })
-    .init();
+    }).init();
   },
   methods:{
     toplist(name){
+      $('.menu-dark-backdrop').removeClass('in').off()
+      $('body').css("overflow", "auto")
       var pathname = this.$route.name
       if(name === '首页') {
         if(pathname === 'home') {
+          $("#menu").removeClass('menu-open')
             return
         } else {
           this.$router.push({path: '/home'})
         }
       } else if(name === '采购公告' || name === '结果公示'){
         if(pathname === 'list'){
+          
         } else {
         }
       } else if(name === '法律法规' || name === '国资监管规定' || name === '新闻动态'){
         sessionStorage.setItem('name',name )
         if(pathname === 'newlist'){
           this.$emit('name', name)
+           $("#menu").removeClass('menu-open')
         } else {
           this.$store.commit('topnewliststr',name)
           this.$router.push({path: '/newlist'})
@@ -175,10 +178,13 @@ export default {
       }
     },
     topchilr(name){
+      $('.menu-dark-backdrop').removeClass('in').off()
+      $('body').css("overflow", "auto")
       var pathname = this.$route.name
       if(name === '工程类公告' || name === '货物类公告'|| name === '服务类公告'||name === '招投标服务网公告'){
         if(pathname === 'list'){
           this.$emit('name', name)
+          $("#menu").removeClass('menu-open')
         } else {
           this.$store.commit('topgonggaoStr',name)
           this.$router.push({path: '/list'})
@@ -187,6 +193,7 @@ export default {
       if(name === '结果公示'||name === '废标公告'||name === '变更公告'||name === '单一来源采购公告'){
         if(pathname === 'list'){
           this.$emit('names', name)
+          $("#menu").removeClass('menu-open')
         } else {
           this.$store.commit('topgongshiStr',name)
           this.$router.push({path: '/list'})
@@ -195,9 +202,7 @@ export default {
     }
   }
 };
-$(function($) {
-  
-});
+
 </script>
 <style scoped>
 a{

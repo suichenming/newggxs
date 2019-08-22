@@ -15,19 +15,19 @@
         <button @click="searchCompany">搜企业</button>
       </div>
       <div class="phonemiddle" v-loading="idloaings">
-         
         <div class="phonelist">
           <span class="firsttitle">项目公告</span>
           <button @click="btn" class="select">筛选</button>
           <div class="btn_s">
             <div class="row" style="font-weight:600;margin-left: 6%;">公告类型</div>
-            <div class="row row_s">
+            <div class="row row_s" >
               <div
                 class="col-md-3 col-lg-3 col-xs-3 col-sm-3"
                 v-for="(item,index) in first"
                 :key="index"
                 @click="firsts(item.name,index)"
-                :style="{color: index === firstunm? '#028bcf' : '#333'}"
+                v-if="item.name !== '单一来源采购公告' && item.name !== '招投标服务网公告'"
+                :style="{color: index === firstunm? '#028bcf' : '#333'}" 
               >{{item.name}}</div>
             </div>
             <div class="row" style="font-weight:600;margin-left: 6%;">项目类型</div>
@@ -247,7 +247,7 @@ export default {
           $(document.body).height() - $(window).height()
         ) {
           _this.obj.pageNo += 10;
-          _this.idloaings = true
+          _this.idloaings = true;
           getSearchResultList(_this.obj)
             .then(item => {
               _this.idloaings = false;
@@ -256,7 +256,8 @@ export default {
               }
             })
             .catch(error => {
-              _this.loading = false;_this.idloaings = false;
+              _this.loading = false;
+              _this.idloaings = false;
             });
         }
       });
@@ -295,7 +296,7 @@ export default {
         this.list = item.data;
         this.phonelist = item.data;
         this.loading = false;
-        this.idloaings = false
+        this.idloaings = false;
       })
       .catch(error => {
         this.loading = false;
@@ -377,6 +378,7 @@ export default {
         .then(item => {
           this.total = item.data[0].pagesNo;
           this.list = item.data;
+          this.phonelist = item.data;
           this.loading = false;
         })
         .catch(error => {
@@ -389,6 +391,7 @@ export default {
       this.obj.project_name = name;
       getSearchResultList(this.obj)
         .then(item => {
+          this.phonelist = item.data;
           this.total = item.data[0].pagesNo;
           var datas = item.data;
           this.list = datas;
@@ -420,7 +423,7 @@ export default {
       this.obj.project_type = name;
       getSearchResultList(this.obj)
         .then(item => {
-          this.phonelist = item.data
+          this.phonelist = item.data;
           this.total = item.data[0].pagesNo;
           this.list = item.data;
           this.loading = false;
@@ -435,7 +438,7 @@ export default {
       this.obj.cate_id = name;
       getSearchResultList(this.obj)
         .then(item => {
-          this.phonelist = item.data
+          this.phonelist = item.data;
           this.total = item.data[0].pagesNo;
           this.list = item.data;
           this.loading = false;
@@ -450,7 +453,7 @@ export default {
       this.obj.dateState = name;
       getSearchResultList(this.obj)
         .then(item => {
-          this.phonelist = item.data
+          this.phonelist = item.data;
           this.total = item.data[0].pagesNo;
           this.list = item.data;
           this.loading = false;
@@ -465,7 +468,7 @@ export default {
       this.obj.moneyStr = name;
       getSearchResultList(this.obj)
         .then(item => {
-          this.phonelist = item.data
+          this.phonelist = item.data;
           this.total = item.data[0].pagesNo;
           this.list = item.data;
           this.loading = false;
@@ -489,13 +492,13 @@ export default {
       }
     },
     removes() {
-      this.firstunm= 0
-      this.secondunm= 0
-      this.thirdunm= 0
-      this.fourunm= 0
+      this.firstunm = 0;
+      this.secondunm = 0;
+      this.thirdunm = 0;
+      this.fourunm = 0;
       getSearchResultList()
         .then(item => {
-          this.phonelist = item.data
+          this.phonelist = item.data;
           this.total = item.data[0].pagesNo;
           this.list = item.data;
           this.loading = false;
@@ -506,13 +509,77 @@ export default {
     },
     overs() {
       this.ishow = false;
-      $(".btn_s").stop(true).animate({maxHeight:"0"},300);
+      $(".btn_s")
+        .stop(true)
+        .animate({ maxHeight: "0" }, 300);
     },
     detailClick(item) {
-      console.log(item)
+      if (item.gongao_type === "招投标服务网公告") {
+        console.log(item)
+        sessionStorage.setItem("pdf_annex", item.buyer_name);
+        this.$router.push({ path: "/gzjgdetails" });
+      } else {
+        var name = item.gongao_type.replace("示", "告");
+        var strUrl = "";
+        if (name == "采购公告") {
+          strUrl += "cggg";
+        }
+        if (name.indexOf("变更") != -1) {
+          strUrl += "bggg";
+        }
+        if (name.indexOf("废标") != -1) {
+          strUrl += "fbgg";
+        }
+        if (name.indexOf("成交") != -1) {
+          strUrl += "cjgg";
+        }
+        if (name.indexOf("单一来源") != -1) {
+          strUrl += "dyly";
+        }
+        var objs = {
+          gongao_type: strUrl,
+          noticeId: item.id
+        };
+        sessionStorage.setItem("obj", JSON.stringify(objs));
+        if (item.gongao_type === "变更公示") {
+          this.$router.push({ path: "/detail" });
+        } else if (item.gongao_type === "废标公示") {
+          this.$router.push({ path: "/detail2" });
+        } else {
+          this.$router.push({ path: "/detail" });
+        }
+      }
     },
-    detali(item){
-      console.log(item)
+    detali(item) {
+      var name = item.gongao_type.replace("示", "告");
+        var strUrl = "";
+        if (name == "采购公告") {
+          strUrl += "cggg";
+        }
+        if (name.indexOf("变更") != -1) {
+          strUrl += "bggg";
+        }
+        if (name.indexOf("废标") != -1) {
+          strUrl += "fbgg";
+        }
+        if (name.indexOf("成交") != -1) {
+          strUrl += "cjgg";
+        }
+        if (name.indexOf("单一来源") != -1) {
+          strUrl += "dyly";
+        }
+        var objs = {
+          gongao_type: strUrl,
+          noticeId: item.id
+        };
+        sessionStorage.setItem("obj", JSON.stringify(objs));
+        if (item.gongao_type === "变更公告") {
+          this.$router.push({ path: "/detail" });
+        } else if (item.gongao_type === "废标公告") {
+          this.$router.push({ path: "/detail2" });
+        } else {
+          this.$router.push({ path: "/detail" });
+        }
     }
   }
 };
@@ -700,10 +767,9 @@ export default {
     background: red;
     background: #d9d9f3;
     border-radius: 6px;
-    font-size: 12px
+    font-size: 12px;
   }
 
- 
   .phonemiddle {
     margin-right: 10px;
     margin-left: 10px;

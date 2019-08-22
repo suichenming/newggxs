@@ -8,7 +8,7 @@
           <shares />
         </div>
         <div class="dateO" style="text-align: center;"></div>
-        <div v-html="list" class="mylist">{{list}}</div>
+        <div v-html="list" class="mylist table-responsive">{{list}}</div>
         <div style="width: 890px; margin: 0 auto;border-bottom: 1px solid #3694EB;">
           <p
             style="display: inline-block;  padding: 10px 20px; background: #3694EB; color: #fff;"
@@ -28,6 +28,7 @@
         </div>
       </div>
     </div>
+     <foo-ter></foo-ter>
   </div>
 </template>
 <script>
@@ -74,15 +75,7 @@ export default {
 .btn2:hover {
   background-color: #0e6fa4;
 }
-.mylist {
-  width: 100%;
-  text-align: left;
-  text-indent: 2em;
-  line-height: 20px;
-  margin-top: 20px;
-  padding: 0 100px;
-  /* padding:0 100px */
-}
+
 /**底部**/
 footer {
   background: #2984b7;
@@ -144,6 +137,15 @@ footer li {
   margin-top: 35px;
 }
 @media screen and (min-width: 1024px) {
+  .mylist {
+  width: 100%;
+  text-align: left;
+  text-indent: 2em;
+  line-height: 20px;
+  margin-top: 20px;
+  padding: 0 100px;
+  /* padding:0 100px */
+}
   .titles {
     margin-top: 56px;
   }
@@ -161,6 +163,14 @@ footer li {
   }
 }
 @media screen and (max-width: 770px) {
+  .mylist {
+  width: 100%;
+  text-align: left;
+  text-indent: 2em;
+  line-height: 20px;
+  margin-top: 20px;
+  /* padding:0 100px */
+}
   .new-cg-row {
     width: 100% !important;
     margin: 0px auto;

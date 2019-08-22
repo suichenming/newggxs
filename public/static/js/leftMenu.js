@@ -31,7 +31,7 @@
                         et = et.parent()
                     }
                 }
-                location.href = et.find('a').eq(0).attr("href")
+                //location.href = et.find('a').eq(0).attr("href")
 
                 if ($(et).hasClass('open')) {
                     $(et).removeClass('open').find('li').removeClass('open')

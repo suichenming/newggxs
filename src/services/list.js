@@ -47,3 +47,12 @@ export function queryXGNotice(objparams){
         })
     })
 }
+//  gzjgdetails页面接口
+export function gzjgDdetails(objparams){
+    let postData = qs.stringify(objparams)
+    return new Promise((reslove,reiect) => {
+        axios.post('./indexNotice/gzjgDdetails',postData,{headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}}).then(res => {
+            reslove(res)
+        })
+    })
+}

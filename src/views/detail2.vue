@@ -32,6 +32,7 @@
         </div>
       </div>
     </div>
+     <foo-ter></foo-ter>
   </div>
 </template>
 <script>
@@ -145,6 +146,14 @@ footer li {
   margin-top: 35px;
 }
 @media screen and (min-width: 1024px) {
+  #mylist {
+  width: 100%;
+  text-align: left;
+  text-indent: 2em;
+  line-height: 20px;
+  margin-top: 20px;
+  padding: 0 100px;
+}
   .titles {
     margin-top: 56px;
   }
@@ -162,6 +171,13 @@ footer li {
   }
 }
 @media screen and (max-width: 770px) {
+  #mylist {
+  width: 100%;
+  text-align: left;
+  text-indent: 2em;
+  line-height: 20px;
+  margin-top: 20px;
+}
   .new-cg-row {
     width: 100% !important;
     margin: 0px auto;
@@ -173,14 +189,7 @@ footer li {
     border-top: 1px #e6e6e6 solid;
   }
 }
-#mylist {
-  width: 100%;
-  text-align: left;
-  text-indent: 2em;
-  line-height: 20px;
-  margin-top: 20px;
-  padding: 0 100px;
-}
+
 .fontSi {
   text-align: center;
   display: flex;

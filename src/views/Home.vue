@@ -530,7 +530,8 @@ export default {
       }
     },
     gzjgDetails(item) {
-      console.log(item.pdf_annex, 1);
+      sessionStorage.setItem("pdf_annex", item.pdf_annex);
+      this.$router.push({ path: "/gzjgdetails" });
     }
   }
 };

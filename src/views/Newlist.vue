@@ -15,7 +15,7 @@
             <div class="lists">
                 <table class="table  tab1" v-loading="loading">
                     <tr class="tabs">
-                        <td class="td1">标题</td>
+                        <td class="td1 spec">标题</td>
                         <td class="td2">时间</td>
                     </tr>
                     <tr v-for="(item,index) in list" :key="index" :class="(index%2==0)?blue:lightblue" class="only" @click="detail(item)">
@@ -110,6 +110,10 @@ export default {
             this.loading = true
             this.obj.pageNo = val
             this.funaxios()
+        },
+        detail(item){
+            sessionStorage.setItem("articleID", item.articleID);
+            this.$router.push({ path: "/details" });
         }
         
     },
@@ -117,11 +121,12 @@ export default {
 </script>
 <style scoped>
 /**头部**/
-@media screen and (min-width:770px){
     .table > tr > td{
    padding: 8px;
    border-top: 1px solid #ddd;
  }
+@media screen and (min-width:770px){
+
 	.smallcontainer{
 	width:90%;
 	margin:0 auto

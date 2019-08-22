@@ -7,6 +7,7 @@ import Newlist from '../views/Newlist.vue'
 import details from '../views/details.vue'
 import detail from '../views/detail.vue'
 import detail2 from '../views/detail2.vue'
+import gzjgdetails from '../views/gzjgdetails.vue'
 Vue.use(Router)
 export default new Router({
   //mode: 'history',
@@ -42,6 +43,10 @@ export default new Router({
       path: '/detail2',
       name: 'detail2',
       component: detail2
+    },{
+      path: '/gzjgdetails',
+      name: 'gzjgdetails',
+      component: gzjgdetails
     },
     {
       path: '**',
