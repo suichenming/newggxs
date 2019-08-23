@@ -10,7 +10,8 @@ import $ from 'jquery'
 import "bootstrap"
 import "bootstrap/dist/css/bootstrap.css"
 
-
+import VueCountUp from 'vue-countupjs'
+Vue.use(VueCountUp)
 
 import navheader from './components/header.vue'
 Vue.component('navheader', navheader);

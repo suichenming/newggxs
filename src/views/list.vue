@@ -23,10 +23,9 @@
             <div class="row row_s" >
               <div
                 class="col-md-3 col-lg-3 col-xs-3 col-sm-3"
-                v-for="(item,index) in first"
+                v-for="(item,index) in first1"
                 :key="index"
                 @click="firsts(item.name,index)"
-                v-if="item.name !== '单一来源采购公告' && item.name !== '招投标服务网公告'"
                 :style="{color: index === firstunm? '#028bcf' : '#333'}" 
               >{{item.name}}</div>
             </div>
@@ -190,6 +189,13 @@ export default {
         { name: "结果公示" },
         { name: "单一来源采购公告" },
         { name: "招投标服务网公告" }
+      ],
+      first1: [
+        { name: "全部" },
+        { name: "采购公告" },
+        { name: "变更公告" },
+        { name: "废标公告" },
+        { name: "结果公示" },
       ],
       second: [
         { name: "全部" },

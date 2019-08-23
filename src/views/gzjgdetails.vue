@@ -12,18 +12,14 @@
             <div></div>
         </div>
             <div id="bbbb" class="middle" style="height:900px">
-            <iframe id="aaaa" :src="url" width="100%" height="100%" frameborder="0" ></iframe>
+            <iframe id="aaaa" :src="urls" width="100%" height="100%" frameborder="0" ></iframe>
         </div>
          <foo-ter></foo-ter>
     </div>
 </template>
 <script>
 import { gzjgDdetails } from "../services/list";
-import pdf from 'vue-pdf'
 export default {
-    components: {
-    　　　　pdf
-  　},
     data(){
         return {
             title:"",
@@ -31,17 +27,15 @@ export default {
             url:"",
             obj:{
                 'batch_no':sessionStorage.getItem('pdf_annex')
-            }
+            },
+            urls: ''
         }
     },
     mounted() {
         console.log(sessionStorage.getItem('pdf_annex'))
         gzjgDdetails(this.obj).then(item => {
-            console.log(item)
             var datas = item.data[0]
-            var url="indexNotice/devDoc?storeName="+datas.address;
-            this.url = url
-            console.log(this.url)
+            this.urls = item.config.baseURL + '/indexNotice/devDoc?storeName=' + datas.address
             if(datas == null || datas == ''){
         		$('#bbbb').html('没有查询到相关数据！');
         		$('#cccc').html('');
@@ -49,8 +43,7 @@ export default {
         		this.title = datas.title;
                 this.date = datas.publish_time;
                 this.url = datas.url;
-        	}
-          
+            }
         })
         
     },

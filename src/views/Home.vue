@@ -8,7 +8,8 @@
           <div class="box">
             <div class="written">正在采购</div>
             <div class="writenword">
-              <span class="counter">{{counter}}</span>
+              <span class="counter">
+                <v-countup :start-value="start" :end-value="counter"  :decimals="0"  :options="options"></v-countup></span>
               <span style="font-size: 25px;">
                 <b>个项目</b>
               </span>
@@ -20,7 +21,7 @@
           <div class="box">
             <div class="written">采购预算金额</div>
             <div class="writenword">
-              <span class="counter1">{{counter1}}</span>
+              <span class="counter1"><v-countup :start-value="start" :end-value="counter1"  :decimals="2"  :options="options"></v-countup></span>
               <span style="font-size: 25px;">
                 <b>亿</b>
               </span>
@@ -32,7 +33,7 @@
           <div class="box">
             <div class="written">累计完成</div>
             <div class="writenword">
-              <span class="counter2">{{counter2}}</span>
+              <span class="counter2"><v-countup :start-value="start" :end-value="counter2"  :decimals="0"  :options="options"></v-countup></span>
               <span style="font-size: 25px;">
                 <b>个项目</b>
               </span>
@@ -44,7 +45,9 @@
           <div class="box">
             <div class="written">累计完成金额</div>
             <div class="writenword">
-              <span class="counter3">{{counter3}}</span>
+              <span class="counter3">
+                <v-countup :start-value="start" :end-value="counter3"  :decimals="2"  :options="options"></v-countup>
+              </span>
               <span style="font-size: 25px;">
                 <b>亿</b>
               </span>
@@ -259,6 +262,7 @@
   </div>
 </template>
 <script>
+
 import {
   startNotice,
   finishNotice,
@@ -278,6 +282,7 @@ import {
 } from "../services/home.js";
 export default {
   name: "home",
+ 
   data() {
     return {
       news: [],
@@ -317,7 +322,18 @@ export default {
         { name: "废标公告" },
         { name: "变更公告" }
       ],
-      numjie: 0
+      numjie: 0,
+       options: {
+          useEasing: true, // 缓动动画 easing
+          useGrouping: true, // 1,000,000 vs 1000000
+          separator: ',', // 数字分隔符
+          decimal: '.', // 小数分隔符
+          prefix: '', // 前缀
+          suffix: '' // 后缀
+        },
+        total: 100,
+        start: 1,
+          end: 100
     };
   },
   mounted() {
@@ -327,7 +343,8 @@ export default {
     });
     finishNotice().then(result => {
       this.counter2 = result.number;
-      this.counter3 = result.money;
+      var arr = result.money.split(',')
+      this.counter3 = arr[0] + arr[1];
     });
     this.tab1click(0);
     this.caigouclick(0);
